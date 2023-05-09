@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'AppVeterinaria',
 ]
 
 MIDDLEWARE = [
@@ -74,11 +75,15 @@ WSGI_APPLICATION = 'Veterianria.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'bdk2s8fbratuivsoa8uu',
+            'USER': 'ubefjk8t9sotoaqp',
+            'PASSWORD': 'g5wHfCiwFygGJiUqn8Ty',
+            'HOST': 'bdk2s8fbratuivsoa8uu-mysql.services.clever-cloud.com',
+            'PORT': '3306',
+        }
     }
-}
 
 
 # Password validation

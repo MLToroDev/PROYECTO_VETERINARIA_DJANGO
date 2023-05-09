@@ -1,57 +1,85 @@
 from django.db import models
-from datetime import datetime
 
-class Persona(models.Model):
-    Cedula = models.CharField(max_length=20, primary_key=True)
-    Nombre_Persona = models.CharField(max_length=50)
-    Apellido = models.CharField(max_length=50)
-    Edad = models.IntegerField()
-    Id_Rol = models.CharField(max_length=12)
-    Usuario = models.CharField(max_length=20, null=True)
-    Contrasena = models.CharField(max_length=20, null=True)
-
-class Mascota(models.Model):
-    Id_Mascota = models.AutoField(primary_key=True, unique=True)
-    Nombre_Mascota = models.CharField(max_length=50)
-    Especie = models.CharField(max_length=20)
-    Raza = models.CharField(max_length=50)
-    Caracteristicas = models.CharField(max_length=100)
-    Peso = models.DecimalField(max_digits=5, decimal_places=2)
-
-class Registro(models.Model):
-    Fecha = models.CharField(max_length=20, primary_key=True)
-    Id_Mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE)
-    Motivo = models.CharField(max_length=500)
-    Sintomatologia = models.CharField(max_length=500, null=True)
-    Diagnostico = models.CharField(max_length=500)
-    Procedimiento = models.CharField(max_length=100, null=True)
-    Detalle_Procedimiento = models.CharField(max_length=500, null=True)
-    Id_Orden = models.IntegerField(null=True)
-    Historial_Vacunacion = models.CharField(max_length=500, null=True)
-    Medicamento_Alergico = models.CharField(max_length=100, null=True)
-    Anulacion_Orden = models.BooleanField(null=True)
-    Id_Factura = models.AutoField(null=True)
-
-class HistorialClinico(models.Model):
-    Id_Mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE)
-    Id_Registro = models.ForeignKey(Registro, on_delete=models.CASCADE)
-    Id_Historial_Clinica = models.AutoField(null=True)
-
-class Orden(models.Model):
-    Id_Orden = models.AutoField(primary_key=True)
-    Medicamento = models.CharField(max_length=200, null=True)
-    Dosis = models.CharField(max_length=50, null=True)
-
-class Rol(models.Model):
-    Id_Rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
-    Admin = models.IntegerField(null=True)
-    Doct = models.AutoField(null=True)
 
 class Factura(models.Model):
-    Id_Factura = models.AutoField(primary_key=True)
-    Id_Registro = models.ForeignKey(Registro, on_delete=models.CASCADE)
-    Id_Orden = models.ForeignKey(Orden, null=True, on_delete=models.CASCADE)
-    Nombre_Producto = models.CharField(max_length=100, null=True)
-    Cantidad = models.IntegerField(null=True)
-    Valor = models.FloatField()
-    Fecha = models.DateTimeField(default=datetime.now)
+    id_factura = models.AutoField(primary_key=True)
+    id_registro = models.ForeignKey('Registro', models.DO_NOTHING, db_column='id_registro')
+    nombre_producto_cantidad = models.CharField(db_column='nombre_producto-cantidad', max_length=500)  # Field renamed to remove unsuitable characters.
+    fecha = models.DateTimeField()
+    valor = models.CharField(max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'factura'
+
+
+class HistorialClinico(models.Model):
+    id_mascota = models.OneToOneField('Mascota', models.DO_NOTHING, db_column='id_mascota', primary_key=True)
+    id_registro = models.ForeignKey('Registro', models.DO_NOTHING, db_column='id_registro')
+
+    class Meta:
+        managed = False
+        db_table = 'historial_clinico'
+
+
+class Mascota(models.Model):
+    id_mascota = models.AutoField(primary_key=True)
+    cedula_dueño = models.ForeignKey('Persona', models.DO_NOTHING, db_column='cedula_due±o')
+    nombre_mascota = models.CharField(max_length=50)
+    especie = models.CharField(max_length=50)
+    raza = models.CharField(max_length=50)
+    caracteristicas = models.CharField(max_length=50)
+    peso = models.CharField(max_length=10)
+
+    class Meta:
+        managed = False
+        db_table = 'mascota'
+
+
+class Orden(models.Model):
+    id_orden = models.AutoField(primary_key=True)
+    medicamento_dosis = models.CharField(db_column='medicamento-dosis', max_length=500)  # Field renamed to remove unsuitable characters.
+
+    class Meta:
+        managed = False
+        db_table = 'orden'
+
+
+class Persona(models.Model):
+    cedula_persona = models.CharField(primary_key=True, max_length=20)
+    nombre_persona = models.CharField(max_length=50)
+    apellidos = models.CharField(max_length=50)
+    edad = models.CharField(max_length=3)
+    id_rol = models.ForeignKey('Rol', models.DO_NOTHING, db_column='id_rol')
+    usuario = models.CharField(max_length=50, blank=True, null=True)
+    contraseña = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'persona'
+
+
+class Registro(models.Model):
+    fecha_registro = models.DateTimeField(db_column='Fecha_Registro', primary_key=True)  # Field name made lowercase.
+    id_mascota = models.ForeignKey(Mascota, models.DO_NOTHING, db_column='ID_Mascota')  # Field name made lowercase.
+    cedula_veterinario = models.ForeignKey(Persona, models.DO_NOTHING, db_column='Cedula_Veterinario')  # Field name made lowercase.
+    motivo = models.CharField(db_column='Motivo', max_length=500)  # Field name made lowercase.
+    sintomatologia = models.CharField(db_column='Sintomatologia', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    diagnostico = models.CharField(db_column='Diagnostico', max_length=500)  # Field name made lowercase.
+    procedimiento = models.CharField(db_column='Procedimiento', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    detalle_procedimiento = models.CharField(db_column='Detalle_Procedimiento', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    historial_vacunacion = models.CharField(db_column='Historial_Vacunacion', max_length=500, blank=True, null=True)  # Field name made lowercase.
+    id_orden = models.ForeignKey(Orden, models.DO_NOTHING, db_column='ID_Orden', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'registro'
+
+
+class Rol(models.Model):
+    id_rol = models.AutoField(primary_key=True)
+    tipo_rol = models.CharField(max_length=15)
+
+    class Meta:
+        managed = False
+        db_table = 'rol'
