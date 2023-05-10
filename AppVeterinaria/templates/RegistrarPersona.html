@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <head>
-    <title>Registrar Persona</title>
+  <title>Registrar Persona</title>
 </head>
-<section class="ftco-section">
-    <div class="container">         
-        <div class="p-5">
-          <div class="border p-3 w-50 container-fluid">
-            <div class="form-header">
-              <h3>Registrar Persona</h3>
-            </div>
+<section>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="mb-3">Registrar Persona</h2>
             <form action="" method="post" class="">
               <div class="form-group mb-3">
-                <label class="label text-start">Nombre(s)</label>
+                <label class="label">Nombre(s)</label>
                 <input type="text" class="form-control" placeholder="Nombre(s)" name="" required>
               </div>
               <div class="form-group mb-3">
@@ -46,9 +47,66 @@
                 <label class="label" for="name">Contraseña</label>
                 <input type="password" class="form-control" placeholder="Contraseña" name="NombreUsuario" required>
               </div>
+              <div class="d-flex justify-content-center mt-4 form-group">
+                <!-- Button trigger modal cancelar -->
+                <button type="button" class="btn btn-secondary me-3" data-bs-toggle="modal"
+                  data-bs-target="#cancelarModal">
+                  Cancelar
+                </button>
+
+                <!-- Button trigger modal guardar-->
+                <button type="submit" class="btn btn-success ms-3" data-bs-toggle="modal"
+                  data-bs-target="#guardarmodal">
+                  Guardar
+                </button>
+              </div>
             </form>
           </div>
         </div>
+      </div>
     </div>
-  </section>
+  </div>
+
+
+  <!-- Modal de Confirmación de Guardar -->
+  <div class="modal fade" id="guardarModal" tabindex="-1" role="dialog" aria-labelledby="guardarModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="guardarModalLabel">Guardar Cambios</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Está seguro de que desea guardar los cambios?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal cancelar -->
+  <div class="modal fade" id="cancelarModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="cancelarModalLabel">Confirmar cancelacion</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Esta seguro que desea regresar al menu principal?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Regresar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
