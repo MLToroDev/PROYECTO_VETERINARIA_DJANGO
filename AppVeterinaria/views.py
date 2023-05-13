@@ -9,3 +9,6 @@ def RegistrarPersona(request):
 def listarPersona(request):
     return render(request, 'Persona/TablaPersona.html')
 
+def signin(request):
+    return render(request, 'Login.html')
+
