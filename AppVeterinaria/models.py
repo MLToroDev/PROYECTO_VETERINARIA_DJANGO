@@ -1,12 +1,11 @@
 from django.db import models
-
-
 class Factura(models.Model):
     id_factura = models.AutoField(primary_key=True)
     id_registro = models.ForeignKey('Registro', models.DO_NOTHING, db_column='id_registro')
-    nombre_producto_cantidad = models.CharField(db_column='nombre_producto-cantidad', max_length=500)  # Field renamed to remove unsuitable characters.
+    nombre_producto_cantidad_valor = models.CharField(db_column='nombre_producto-cantidad-valor', max_length=500)  # Field renamed to remove unsuitable characters.
     fecha = models.DateTimeField()
     valor = models.CharField(max_length=20)
+    valor_consulta = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -36,15 +35,6 @@ class Mascota(models.Model):
         db_table = 'mascota'
 
 
-class Orden(models.Model):
-    id_orden = models.AutoField(primary_key=True)
-    medicamento_dosis = models.CharField(db_column='medicamento-dosis', max_length=500)  # Field renamed to remove unsuitable characters.
-
-    class Meta:
-        managed = False
-        db_table = 'orden'
-
-
 class Persona(models.Model):
     cedula_persona = models.CharField(primary_key=True, max_length=20)
     nombre_persona = models.CharField(max_length=50)
@@ -69,7 +59,7 @@ class Registro(models.Model):
     procedimiento = models.CharField(db_column='Procedimiento', max_length=100, blank=True, null=True)  # Field name made lowercase.
     detalle_procedimiento = models.CharField(db_column='Detalle_Procedimiento', max_length=500, blank=True, null=True)  # Field name made lowercase.
     historial_vacunacion = models.CharField(db_column='Historial_Vacunacion', max_length=500, blank=True, null=True)  # Field name made lowercase.
-    id_orden = models.ForeignKey(Orden, models.DO_NOTHING, db_column='ID_Orden', blank=True, null=True)  # Field name made lowercase.
+    medicamento_dosis = models.CharField(db_column='Medicamento_dosis', max_length=500, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
