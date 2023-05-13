@@ -1,0 +1,44 @@
+{% extends 'Base/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href='{% static "css/style.css" %}'>
+</head>
+<section>
+    <div class="container">
+        <div class="row justify-content-center align-items-center mt-5 mb-5">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="img">
+                        <img class="img" src='' alt="">
+                    </div>
+                    <div class="login-wrap p-5">
+                        <h1 class="text-center mb-3">Iniciar sesión</h1>
+                        <form action="#" class="form-group">
+                            <div class="form-group mb-4">
+                                <label class="label mb-2" for="name">Usuario</label>
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="form-group mb-5">
+                                <label class="label mb-2" for="password">Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary px-3">Ingresar</button>
+                            </div>
+                            <div class="checkbox mt-3 mb-3">
+                                <label>
+                                    <input type="checkbox" value="remember-me"> Recordarme
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

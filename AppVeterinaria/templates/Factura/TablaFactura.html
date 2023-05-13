@@ -1,0 +1,48 @@
+{% extends 'Base/base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <section>
+        <div class="mt-5 mb-5">
+          <div class="card card-body">
+            <div class="mb-2"><h1>Listado de facturas</h1>
+            </div>
+            <div class="table-responsive text-center">
+              <table class="table align-middle table-bordered">
+                <thead class="table-light align-middle">
+                  <tr>
+                    <th>#</th>
+                    <th>Id Factura</th>
+                    <th>Id Registro/consulta</th>
+                    <th>Valor de la consulta</th>
+                    <th>Producto - cantidad - valor</th>
+                    <th>Total a pagar</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody class="">
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>1</td>
+                    <td>12/05/2023 : 8:20:54 pm</td>
+                    <td>$ 60.000</td>
+                    <td>Cat chow - 1 - 13.000</td>
+                    <td>$ 73.000</td>
+                    <td>
+                      <div class="d-grid gap-2 d-md-block">
+                        <a class="btn btn-success" href="">Editar</a>
+                        <a class="btn btn-danger" href="">Eliminar</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

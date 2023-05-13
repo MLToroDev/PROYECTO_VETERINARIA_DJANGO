@@ -1,18 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'Base/base.html' %}
 
 {% block content %}
 
 <head>
   <title>Registrar Persona</title>
 </head>
-<section>
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="mb-3">Registrar Persona</h2>
-            <form action="" method="post" class="">
+
+<main class="container">
+  <section>
+    <form action="" method="post">
+      <div class="row justify-content-center mt-5 mb-5">
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="mb-4 text-center">Menu principal</h1>
+
               <div class="form-group mb-3">
                 <label class="label">Nombre(s)</label>
                 <input type="text" class="form-control" placeholder="Nombre(s)" name="" required>
@@ -55,58 +57,55 @@
                 </button>
 
                 <!-- Button trigger modal guardar-->
-                <button type="submit" class="btn btn-success ms-3" data-bs-toggle="modal"
-                  data-bs-target="#guardarmodal">
+                <button type="button" class="btn btn-success ms-3" data-bs-toggle="modal"
+                  data-bs-target="#guardarModal">
                   Guardar
                 </button>
               </div>
-            </form>
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-
-  <!-- Modal de Confirmación de Guardar -->
-  <div class="modal fade" id="guardarModal" tabindex="-1" role="dialog" aria-labelledby="guardarModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="guardarModalLabel">Guardar Cambios</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ¿Está seguro de que desea guardar los cambios?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+      <!-- Modal guardar -->
+      <div class="modal fade" id="guardarModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="guardarModalLabel">Confirmar guardar</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ¿Esta seguro que desea guardar?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Modal cancelar -->
-  <div class="modal fade" id="cancelarModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="cancelarModalLabel">Confirmar cancelacion</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ¿Esta seguro que desea regresar al menu principal?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Regresar</button>
+      <!-- Modal cancelar -->
+      <div class="modal fade" id="cancelarModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="cancelarModalLabel">Confirmar cancelacion</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ¿Esta seguro que desea regresar al menu principal?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <a href="{% url 'inicio' %}" class="btn btn-primary">Regresar</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </form>
+  </section>
+</main>
 {% endblock %}

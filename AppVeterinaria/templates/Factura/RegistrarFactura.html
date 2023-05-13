@@ -1,0 +1,95 @@
+{% extends 'Base/base.html' %}
+
+{% block content %}
+<main class="container">
+    <section>
+        <form>
+            <div class="row justify-content-center mb-5 mt-5">
+                <div class="card col-md-5">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="mb-3">
+                                <h1 class="text-center">Registro de factura</h1>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="formfechaconsulta" class="form-label">Fecha de consulta</label>
+                                <select id="formfechaconsulta" class="form-select">
+                                    <option selected></option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="formvalconsulta" class="form-label">Valor de la consulta</label>
+                                <input type="text" class="form-control" id="formvalconsulta"
+                                    placeholder="Valor de la consulta">
+                            </div>
+                            <div class="col-12">
+                                <label for="formProductos" class="form-label">Productos - Cantidad - Valor</label>
+                                <textarea type="text" rows="4" class="form-control" id="formProductos"
+                                    placeholder="Productos - Cantidad - Valor." required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="formTotal" class="form-label">Total a pagar</label>
+                                <input type="text" class="form-control" id="formTotal" placeholder="Total a pagar.">
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-3 form-group">
+                                <!-- Button trigger modal cancelar -->
+                                <button type="button" class="btn btn-secondary me-3" data-bs-toggle="modal"
+                                    data-bs-target="#cancelarModal">
+                                    Cancelar
+                                </button>
+
+                                <!-- Button trigger modal guardar-->
+                                <button type="button" class="btn btn-success ms-3" data-bs-toggle="modal"
+                                    data-bs-target="#guardarModal">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal guardar -->
+            <div class="modal fade" id="guardarModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="guardarModalLabel">Confirmar guardar</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Esta seguro que desea guardar?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal cancelar -->
+            <div class="modal fade" id="cancelarModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="cancelarModalLabel">Confirmar cancelacion</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Esta seguro que desea regresar al menu principal?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <a href="{% url 'inicio' %}" class="btn btn-primary">Regresar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</main>
+
+{% endblock %}

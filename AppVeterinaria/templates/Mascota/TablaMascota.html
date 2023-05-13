@@ -1,0 +1,50 @@
+{% extends 'Base/base.html' %}
+
+{% block content %}
+<main class="container">
+    <section>
+        <div class="mt-5 mb-5">
+            <div class="card card-body">
+                <div class="mb-2">
+                    <h1>Listado de mascotas</h1>
+                </div>
+                <div class="table-responsive text-center">
+                    <table class="table align-middle table-bordered">
+                        <thead class="table-light align-middle">
+                            <tr>
+                                <th>#</th>
+                                <th>Id Mascota</th>
+                                <th>Cedula del dueño</th>
+                                <th>Nombre de la mascota</th>
+                                <th>Especie</th>
+                                <th>Raza</th>
+                                <th>Caracteristicas</th>
+                                <th>Peso</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>1</td>
+                                <td>1000</td>
+                                <td>Camila</td>
+                                <td>Felino</td>
+                                <td>Criolla</td>
+                                <td>Blanca, pequeña</td>
+                                <td>1 tonelada</td>
+                                <td>
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <a class="btn btn-success" href="">Editar</a>
+                                        <a class="btn btn-danger" href="">Eliminar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
