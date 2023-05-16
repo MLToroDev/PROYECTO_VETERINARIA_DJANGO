@@ -16,14 +16,15 @@
                     </div>
                     <div class="login-wrap p-5">
                         <h1 class="text-center mb-3">Iniciar sesión</h1>
-                        <form action="#" class="form-group">
+                        <form action="#" class="form-group" method="post">
+                            {% csrf_token %}
                             <div class="form-group mb-4">
                                 <label class="label mb-2" for="name">Usuario</label>
-                                <input type="text" class="form-control" placeholder="Username" required>
+                                <input type="text" class="form-control" placeholder="Username" required name="username">
                             </div>
                             <div class="form-group mb-5">
                                 <label class="label mb-2" for="password">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Password" required>
+                                <input type="password" class="form-control" placeholder="Password" required name="password">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="form-control btn btn-primary px-3">Ingresar</button>
