@@ -14,9 +14,36 @@ def bienvenida(request):
 def menuPl(request):
     return render(request, 'index.html')
 
-def exit(request):
-    logout(request)
-    return redirect('bienvenida')
+def RegistrarPersona(request):
+    return render(request, 'Persona/RegistrarPersona.html')
+
+
+def listarPersona(request):
+    return render(request, 'Persona/TablaPersona.html')
+
+#-------------------------------------------------------------
+
+def RegistarMascota(request):
+    return render(request, 'Mascota/RegistrarMascota.html')
+
+def listarMascota(request):
+    return render(request, 'Mascota/TablaMascota.html')
+
+#-------------------------------------------------------------
+
+def RegistrarFactura(request):
+    return render(request, 'Factura/RegistrarFactura.html')
+
+def listarFactura(request):
+    return render(request, 'Factura/TablaFactura.html')    
+
+#-------------------------------------------------------------
+
+def RegistrarConsulta(request):
+    return render(request, 'Registro/RegistroConsulta.html')
+
+def listarConsulta(request):
+    return render(request, 'Registro/TablaRegistroConsulta.html')     
 
 
 

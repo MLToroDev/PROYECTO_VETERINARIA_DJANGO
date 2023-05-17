@@ -130,5 +130,6 @@ STATICFIELS_DIRS = (os.path.join(BASE_DIR, 'AppVeterinaria/static'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/menu_principal/'
+LOGIN_REDIRECT_URL = 'inicio'
+
 LOGOUT_REDIRECT_URL = 'bienvenida'
